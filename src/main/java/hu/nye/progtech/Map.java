@@ -95,18 +95,7 @@ public class Map {
         }
 
     }
-    private void placeShip(int rowBegin, int columnBegin, int rowEnd, int columnEnd, Ship ship, char[][] map) {
-        if (rowBegin == rowEnd) {
-            for (int i = columnBegin; i <= columnEnd; i++) {
-                map[rowBegin][i] = 'O';
-            }
-        } else {
-            for (int i = rowBegin; i <= rowEnd; i++) {
-                map[i][columnBegin] = 'O';
-            }
-        }
-        ship.place(rowBegin, columnBegin, rowEnd, columnEnd);
-    }
+
 
     void player2Map(){
         Scanner scanner = new Scanner(System.in);
@@ -157,6 +146,21 @@ public class Map {
         }
 
     }
+
+
+    private void placeShip(int rowBegin, int columnBegin, int rowEnd, int columnEnd, Ship ship, char[][] map) {
+        if (rowBegin == rowEnd) {
+            for (int i = columnBegin; i <= columnEnd; i++) {
+                map[rowBegin][i] = 'O';
+            }
+        } else {
+            for (int i = rowBegin; i <= rowEnd; i++) {
+                map[i][columnBegin] = 'O';
+            }
+        }
+        ship.place(rowBegin, columnBegin, rowEnd, columnEnd);
+    }
+
 
     public boolean checkSize(int rowBegin, int columnBegin, int rowEnd, int columnEnd, int size) {
         if (rowBegin == rowEnd || columnBegin == columnEnd) {

@@ -5,25 +5,28 @@ import java.util.Scanner;
 public class Game {
 
     Map torpedo;
+
     public Game() {
         torpedo = new Map();
     }
-
 
 
     void game() {
 
 
         Scanner scanner = new Scanner(System.in);
-        torpedo.printplayerMap();
-        torpedo.PlayerMap();
         System.out.println("Elso jatekos adja meg a nevet:");
         Player player = new Player(scanner.nextLine());
+        torpedo.printplayerMap();
+        torpedo.PlayerMap();
+        String playerTurn = "player";
+
         Scanner scanner2 = new Scanner(System.in);
-        torpedo.printplayer2Map();
-        torpedo.player2Map();
         System.out.println("Masodik jatekos adja meg a nevet:");
         Player player2 = new Player(scanner2.nextLine());
+        torpedo.printplayer2Map();
+        torpedo.player2Map();
+
 
 
         System.out.println("\nA játék kezdődik: \n" +
@@ -31,12 +34,15 @@ public class Game {
 
         while (true) {
 
+
             System.out.println();
             torpedo.printplayer2Map();
             System.out.println("-----------------------");
             torpedo.printplayerMap();
 
-            if (player.equals(player)) {
+
+            if (playerTurn.equals("player")) {
+
                 System.out.println(player + "következik:");
                 String coordinates = scanner.nextLine();
                 int x = coordinates.charAt(0) - 65;
@@ -68,10 +74,12 @@ public class Game {
                     System.out.println("-----------------------");
                     torpedo.printplayerMap();
                     System.out.println("Nem talált");
-                    player = player2;
+                    playerTurn = "player2";
+
                 }
 
             } else {
+
                 System.out.println(player2 + "következik:\n");
                 String coordinates = scanner2.nextLine();
                 int x = coordinates.charAt(0) - 65;
@@ -98,6 +106,12 @@ public class Game {
                         System.exit(0);
                     }
 
+                } else {
+                    torpedo.printplayerMap();
+                    System.out.println("-----------------------");
+                    torpedo.printplayer2Map();
+                    System.out.println("Nem talált");
+                    playerTurn = "player";
                 }
             }
         }
