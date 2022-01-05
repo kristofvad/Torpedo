@@ -1,5 +1,6 @@
-package hu.nye.progtech;
+package hu.nye.progtech.service.game;
 
+import hu.nye.progtech.game.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -19,10 +20,11 @@ public class CoordinateTest {
 
     public void testTruecheckSize() {
 
-
-
         Assertions.assertTrue(test.checkSize(1 ,3,1,3,1));
 
     }
+
+
+
 
 }

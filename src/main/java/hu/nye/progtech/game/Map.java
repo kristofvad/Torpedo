@@ -1,13 +1,55 @@
-package hu.nye.progtech;
+package hu.nye.progtech.game;
 
 import java.util.Scanner;
 
+/**
+ * Map implemetation.
+ */
 public class Map {
 
     char[][] playerMap;
     char[][] player2Map;
     Ship[] playerShips;
     Ship[] player2Ships;
+
+    public Map(char[][] playerMap, char[][] player2Map, Ship[] playerShips, Ship[] player2Ships) {
+        this.playerMap = playerMap;
+        this.player2Map = player2Map;
+        this.playerShips = playerShips;
+        this.player2Ships = player2Ships;
+    }
+
+    public char[][] getPlayerMap() {
+        return playerMap;
+    }
+
+    public void setPlayerMap(char[][] playerMap) {
+        this.playerMap = playerMap;
+    }
+
+    public char[][] getPlayer2Map() {
+        return player2Map;
+    }
+
+    public void setPlayer2Map(char[][] player2Map) {
+        this.player2Map = player2Map;
+    }
+
+    public Ship[] getPlayerShips() {
+        return playerShips;
+    }
+
+    public void setPlayerShips(Ship[] playerShips) {
+        this.playerShips = playerShips;
+    }
+
+    public Ship[] getPlayer2Ships() {
+        return player2Ships;
+    }
+
+    public void setPlayer2Ships(Ship[] player2Ships) {
+        this.player2Ships = player2Ships;
+    }
 
     public Map() {
         this.playerMap = new char[10][10];
@@ -46,7 +88,7 @@ public class Map {
         }
     }
 
-    void PlayerMap() {
+    void playerMap() {
         Scanner scanner = new Scanner(System.in);
 
         playerShips = new Ship[5];
@@ -61,9 +103,9 @@ public class Map {
             while (true) {
                 String[] coordinates = scanner.nextLine().split(" ");
                 int rowBegin = coordinates[0].charAt(0) - 65;
-                int columnBegin = Integer.parseInt(coordinates[0].substring(1))-1;
+                int columnBegin = Integer.parseInt(coordinates[0].substring(1)) - 1;
                 int rowEnd = coordinates[1].charAt(0) - 65;
-                int columnEnd = Integer.parseInt(coordinates[1].substring(1))-1;
+                int columnEnd = Integer.parseInt(coordinates[1].substring(1)) - 1;
 
                 if (rowBegin > rowEnd) {
                     int temp = rowBegin;
@@ -96,8 +138,7 @@ public class Map {
 
     }
 
-
-    void player2Map(){
+    void player2Map() {
         Scanner scanner = new Scanner(System.in);
 
         player2Ships = new Ship[5];
@@ -147,7 +188,6 @@ public class Map {
 
     }
 
-
     private void placeShip(int rowBegin, int columnBegin, int rowEnd, int columnEnd, Ship ship, char[][] map) {
         if (rowBegin == rowEnd) {
             for (int i = columnBegin; i <= columnEnd; i++) {
@@ -160,7 +200,9 @@ public class Map {
         }
         ship.place(rowBegin, columnBegin, rowEnd, columnEnd);
     }
-
+    /**
+     * Checking ship size.
+     */
 
     public boolean checkSize(int rowBegin, int columnBegin, int rowEnd, int columnEnd, int size) {
         if (rowBegin == rowEnd || columnBegin == columnEnd) {
@@ -169,13 +211,16 @@ public class Map {
             return false;
         }
     }
+    /**
+     * Checking ship Coordinates.
+     */
 
     public boolean checkCoordinates(int rowBegin, int columnBegin, int rowEnd, int columnEnd, Ship[] ships, char[][] map) {
         for (Ship ship : ships) {
             if (ship.isPlaced()) {
                 for (int i = rowBegin - 1; i <= rowEnd + 1; i++) {
                     for (int j = columnBegin - 1; j <= columnEnd + 1; j++) {
-                        if (Occupied(i, j, map)) {
+                        if (occupied(i, j, map)) {
                             return false;
                         }
                     }
@@ -184,8 +229,11 @@ public class Map {
         }
         return true;
     }
+    /**
+     * Checking if the ship placement is Occupied.
+     */
 
-    public boolean Occupied(int i, int j, char[][] map) {
+    public boolean occupied(int i, int j, char[][] map) {
         i = Math.min(i, 9);
         i = Math.max(i, 0);
         j = Math.min(j, 9);
@@ -193,8 +241,11 @@ public class Map {
 
         return map[i][j] == 'O';
     }
+    /**
+     * Checking if the game ended.
+     */
 
-    boolean GameEnd(char[][] map) {
+    public boolean gameEnd(char[][] map) {
         for (char[] row : map) {
             for (char element : row) {
                 if (element == 'O') {
@@ -204,6 +255,9 @@ public class Map {
         }
         return true;
     }
+    /**
+     * Checking if the player can shoot.
+     */
 
     public boolean playerShot(int x, int y) {
         if (player2Map[x][y] == 'O' || player2Map[x][y] == '+') {
@@ -242,7 +296,7 @@ public class Map {
                     ship.hit();
                 }
             }
-        } return true;
+        }
+        return true;
     }
-
 }

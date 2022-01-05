@@ -1,8 +1,11 @@
-package hu.nye.progtech;
+package hu.nye.progtech.user;
 
+/**
+ * Player's property.
+ */
 public class Player {
 
-    String name;
+    public String name;
 
     public Player(String name) {
         this.name = name;

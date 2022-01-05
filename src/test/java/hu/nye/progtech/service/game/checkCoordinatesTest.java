@@ -1,5 +1,7 @@
-package hu.nye.progtech;
+package hu.nye.progtech.service.game;
 
+import hu.nye.progtech.game.Map;
+import hu.nye.progtech.game.Ship;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

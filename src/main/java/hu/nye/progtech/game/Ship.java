@@ -1,7 +1,10 @@
-package hu.nye.progtech;
+package hu.nye.progtech.game;
 
 import java.util.Arrays;
 
+/**
+ * Ship's property.
+ */
 public class Ship {
 
     String name;
@@ -14,7 +17,7 @@ public class Ship {
     int columnEnd;
     boolean isPlaced;
 
-    Ship(String name, int size){
+    Ship(String name, int size) {
         this.name = name;
         this.size = size;
         this.lives = lives;
@@ -23,7 +26,7 @@ public class Ship {
         this.isPlaced = false;
     }
 
-    void place(int rowBegin, int columnBegin, int rowEnd, int columnEnd){
+    void place(int rowBegin, int columnBegin, int rowEnd, int columnEnd) {
         this.rowBegin = rowBegin;
         this.columnBegin = columnBegin;
         this.rowEnd = rowEnd;

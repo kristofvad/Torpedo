@@ -1,14 +1,22 @@
-package hu.nye.progtech;
+package hu.nye.progtech.service.game;
 
+import hu.nye.progtech.game.Map;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class GameEndTest {
 
     Map test = new Map();
 
-    @Test
 
+
+//    @BeforeEach
+//    public void setUp() {
+//        underTest =
+//    }
+
+    @Test
     void GameEndTest(){
 
         char[][] playerMap = new char[10][10];
@@ -19,12 +27,9 @@ public class GameEndTest {
             }
         }
 
-        char[][] map = new char[10][10];
-        map[5][5] = playerMap[5][5];
-        map[5][5] = 'X';
+        playerMap[5][5] = 'X';
 
-        Assertions.assertTrue(test.GameEnd(map));
+        Assertions.assertTrue(test.gameEnd(playerMap));
 
     }
-
 }

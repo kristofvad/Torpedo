@@ -1,11 +1,13 @@
-package hu.nye.progtech;
+package hu.nye.progtech.service.game;
 
+import hu.nye.progtech.game.Map;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
 public class OccupiedTest {
 
     private Map test = new Map();
+
 
     @Test
 
@@ -31,7 +33,7 @@ public class OccupiedTest {
 
 
 
-        Assertions.assertEquals(test.Occupied(4,4,exception),test.Occupied(4,4,result));
+        Assertions.assertEquals(test.occupied(4,4,exception),test.occupied(4,4,result));
 
     }
 
@@ -43,7 +45,7 @@ public class OccupiedTest {
         ship[4][4] = map[5][5];
         ship[4][4] = 'O';
 
-        Assertions.assertFalse(test.Occupied(3,3,ship));
+        Assertions.assertFalse(test.occupied(3,3,ship));
 
     }
 
